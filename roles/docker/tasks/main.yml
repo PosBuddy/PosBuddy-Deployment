@@ -1,0 +1,49 @@
+
+---
+# This playbook installs docker and docker compose
+
+# install Tools used by Docker
+- name: Install a list of packages
+  apt:
+    pkg:
+    - python3-pip
+    - apt-transport-https
+    - ca-certificates
+    - software-properties-common
+    - gnupg2
+    - pass
+  become: yes
+
+- stat:
+    path: /usr/bin/docker
+  register: dockerLink
+
+- debug:
+    msg: "Doker is already installed"
+  when: dockerLink.stat.islnk is defined
+
+- name: install docker by script
+  shell: "curl -sSL https://get.docker.com | sh"
+  become: true
+  when : dockerLink.stat.islnk is not defined
+
+- name: adding posBuddy to group docker
+  user:
+    name: 'posBuddy'
+    groups: docker
+    append: yes
+  become: true
+  when : dockerLink.stat.islnk is not defined
+
+  # sets docker Login Params from Env
+  # You must run this task BEFORE docker-compose ist installed first
+- name: Setup Dockerhub Login
+  shell: docker login --username {{ lookup('env','DOCKERHUB_USERNAME') }} --password {{ lookup('env','DOCKERHUB_PASSWORD') }}
+  become: true
+# when: "{{ lookup('env','DOCKERHUB_USERNAME') }}" is defined
+
+- name: Check if docker-compose is installed
+  apt:
+    name: docker-compose
+    update_cache: yes
+  become: true 

@@ -1,0 +1,11 @@
+---
+# This playbook deploys the whole Heating Control 3 application
+
+- name: Install all componentes of PosBuddy
+  hosts: all
+  remote_user: hc3
+
+  roles:
+    - greeting
+    - docker
+    - posBuddy

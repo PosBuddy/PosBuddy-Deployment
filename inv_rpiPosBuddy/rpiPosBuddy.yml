@@ -1,0 +1,5 @@
+all: # keys must be unique, i.e. only one 'hosts' per group
+  hosts:
+    rpi-posBuddy:
+      posBuddy_database_image: "mongo:latest"
+

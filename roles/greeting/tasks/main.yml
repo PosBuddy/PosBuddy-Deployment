@@ -1,0 +1,17 @@
+---
+
+# This playbook installs a great Greeting Script that 
+# executes at ssh login
+
+- name: Copy Script to posBuddy user
+  template:
+    src: "templates/welcome.sh"
+    dest: "~"
+    mode: u=rwx,g=rwx,o=rwx
+
+- lineinfile:
+    dest: /etc/profile
+    regexp: '^/home/posBuddy/welcome.sh'
+    line: '/home/posBuddy/welcome.sh'
+  become: true
+
