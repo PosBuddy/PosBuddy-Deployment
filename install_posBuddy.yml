@@ -3,9 +3,9 @@
 
 - name: Install all componentes of PosBuddy
   hosts: all
-  remote_user: hc3
+  remote_user: posBuddy
 
   roles:
     - greeting
     - docker
-    - posBuddy
+#    - posBuddy
