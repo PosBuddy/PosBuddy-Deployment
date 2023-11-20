@@ -6,6 +6,6 @@
   remote_user: posBuddy
 
   roles:
-    - greeting
-    - docker
-#    - posBuddy
+#    - greeting
+#    - docker
+    - posBuddy

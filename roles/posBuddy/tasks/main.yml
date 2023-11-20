@@ -1,0 +1,45 @@
+---
+
+# This playbook installs the PosBuddy System
+
+- name: Prune all dangling Volumnes
+  shell: "docker system prune -f"
+  become: yes
+
+- name: Stop all docker-container
+  shell: docker stop $(docker ps -aq) || true
+  become: yes
+
+- name: Cleanup docker container
+  shell: "docker container prune -f"
+  become: yes
+
+# ------------------------------------------------------------------------------------------------------------------
+
+- name: create posBuddy base dir
+  file:
+    path: /opt/posBuddy
+    state: directory
+    owner: posBuddy
+    group: root
+    mode: 0775
+  become: yes
+
+- name: copy docker-compose file
+  template:
+    src: "templates/docker-compose.yml.y2"
+    dest: "/opt/posBuddy/docker-compose.yml"
+
+- name: copy database init
+  template:
+    src: "templates/initDatabase.py"
+    dest: "/opt/posBuddy/initDatabase.py"
+
+- name: pull docker images
+  shell: "docker-compose -f /opt/posBuddy/docker-compose.yml pull"
+  become: yes
+
+- name: create all not yet created containers
+  shell: "docker-compose -f /opt/posBuddy/docker-compose.yml up -d"
+  become: yes
+
