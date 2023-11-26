@@ -32,7 +32,7 @@
 
 - name: copy database init
   template:
-    src: "templates/initDatabase.py"
+    src: "templates/initDatabase.py.y2"
     dest: "/opt/posBuddy/initDatabase.py"
 
 - name: pull docker images
@@ -43,3 +43,6 @@
   shell: "docker-compose -f /opt/posBuddy/docker-compose.yml up -d"
   become: yes
 
+- name: init database
+  shell: "python /opt/posBuddy/initDatabase.py"
+  become: no
