@@ -5,19 +5,32 @@ import subprocess
 
 
 def main():
-    executePSqlCmd("postgres", "postgres", "CREATE USER  posbuddy  WITH PASSWORD '{{ posBuddy_database_password }}';")
-    executePSqlCmd("postgres", "postgres", "CREATE DATABASE posbuddy;")
-    executePSqlCmd("postgres", "postgres", "GRANT ALL PRIVILEGES ON DATABASE posbuddy TO posbuddy;")
-    executePSqlCmd("postgres", "postgres", "ALTER DATABASE posbuddy OWNER TO posbuddy;")
-
+    # -----------------------------------------------------------------------------------------Create Databases and User
+    executePSqlCmd("postgres", "postgres",
+                   "CREATE USER  posbuddy  WITH PASSWORD '{{ posBuddy_database_password }}';")
+    executePSqlCmd("postgres", "postgres",
+                   "CREATE DATABASE posbuddy;")
+    executePSqlCmd("postgres", "postgres",
+                   "GRANT ALL PRIVILEGES ON DATABASE posbuddy TO posbuddy;")
+    executePSqlCmd("postgres", "postgres",
+                   "ALTER DATABASE posbuddy OWNER TO posbuddy;")
+    # ----------------------------------------------------------------------------------------------- Create Items table
     executePSqlCmd("posbuddy", "posbuddy",
                    "create table items (" \
-                   "artikel        text             not null," \
-                   "einheit        text             not null," \
-                   "minalter       integer          not null," \
-                   "ausgabestation text             not null," \
-                   "preis          double precision not null " \
-                   ");                                       ")
+                   "id                varchar(10)    not null unique, " \
+                   "artikel           varchar(40)    not null," \
+                   "unit              varchar(20)    not null," \
+                   "minAge            integer        not null," \
+                   "dispensingStation varchar(10)    not null," \
+                   "price             real           not null " \
+                   ");                                        ")
+    # ---------------------------------------------------------------------------------- Create DispensingStations table
+    executePSqlCmd("posbuddy", "posbuddy",
+                   "create table dispensingStations (" \
+                   "id                varchar(10)    not null unique, " \
+                   "name              varchar(40)    not null," \
+                   "location          varchar(40)    not null," \
+                   ");                                        ")
 
 
 def executePSqlCmd(database, user, psqlCommand):
