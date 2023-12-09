@@ -10,6 +10,7 @@ read check
 if [ "$check" = "doIt" ];
 then
    echo "Reset posBuddy Database";
+   docker exec posBuddy-database psql -U postgres -c 'drop database posbuddy'
    exit;
 else
   echo "Nothing happend ;-)"

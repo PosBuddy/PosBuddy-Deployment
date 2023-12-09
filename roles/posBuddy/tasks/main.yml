@@ -35,6 +35,11 @@
     src: "templates/initDatabase.py.y2"
     dest: "/opt/posBuddy/initDatabase.py"
 
+- name: copy database reset
+  template:
+    src: "templates/resetPosBuddyDB.sh"
+    dest: "/opt/posBuddy"
+
 - name: pull docker images
   shell: "docker-compose -f /opt/posBuddy/docker-compose.yml pull"
   become: yes

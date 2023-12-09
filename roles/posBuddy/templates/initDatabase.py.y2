@@ -28,9 +28,9 @@ def main():
     executePSqlCmd("posbuddy", "posbuddy",
                    "create table dispensingStations (" \
                    "id                varchar(10)    not null unique, " \
-                   "name              varchar(40)    not null," \
-                   "location          varchar(40)    not null," \
-                   ");                                        ")
+                   "name              varchar(40)    not null,        " \
+                   "location          varchar(40)    not null         " \
+                   ");                                                ")
 
 
 def executePSqlCmd(database, user, psqlCommand):
