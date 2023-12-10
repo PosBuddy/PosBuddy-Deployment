@@ -13,3 +13,7 @@ In this Folder is the posBuddy **example** Certificate Authority.
 ## Passwords
 
 The password _posBuddy_ is used in all cases.
+
+## Manual
+
+https://guides.micronaut.io/latest/micronaut-security-x509-gradle-java.html
