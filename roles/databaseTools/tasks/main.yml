@@ -1,0 +1,15 @@
+---
+
+- name: copy database init
+  template:
+    src: "templates/initDatabase.py.y2"
+    dest: "/opt/posBuddy/initDatabase.py"
+
+- name: copy database reset
+  template:
+    src: "templates/resetPosBuddyDB.sh"
+    dest: "/opt/posBuddy"
+
+- name: init database
+  shell: "python /opt/posBuddy/initDatabase.py"
+  become: no

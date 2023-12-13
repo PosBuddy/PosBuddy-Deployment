@@ -8,4 +8,5 @@
   roles:
 #    - greeting
 #    - docker
-    - posBuddy
+#    - posBuddy
+    - databaseTools
