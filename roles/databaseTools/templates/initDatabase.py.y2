@@ -34,15 +34,16 @@ def main():
     # ---------------------------------------------------------------------------------- Create identity table
     executePSqlCmd("posbuddy", "posbuddy",
                    "create table identity (" \
-                   "posBuddyId        varchar(36)    not null unique, " \
+                   "posBuddyId        varchar(36)    not null,        " \
                    "surname           varchar(40),                    " \
                    "lastname          varchar(40),                    " \
                    "birthday          date,                           " \
                    "atribute1         varchar(40),                    " \
                    "atribute2         varchar(40),                    " \
                    "atribute3         varchar(40),                    " \
-                   "start             date,                           " \
-                   "end               date                            " \
+                   "startAllocation   date,                           " \
+                   "endAllocation     date,                           " \
+                   "balance           real           not null         " \
                    ");                                                ")
     # ---------------------------------------------------------------------------------- Create identity table
     executePSqlCmd("posbuddy", "posbuddy",
