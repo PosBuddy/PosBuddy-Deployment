@@ -35,12 +35,23 @@ def main():
     executePSqlCmd("posbuddy", "posbuddy",
                    "create table identity (" \
                    "posBuddyId        varchar(36)    not null unique, " \
-                   "surname           varchar(40)    not null,        " \
-                   "lastname          varchar(40)    not null,        " \
-                   "birthday          date           not null,        " \
-                   "atribute1          date           not null,        " \
+                   "surname           varchar(40),                    " \
+                   "lastname          varchar(40),                    " \
+                   "birthday          date,                           " \
+                   "atribute1         varchar(40),                    " \
+                   "atribute2         varchar(40),                    " \
+                   "atribute3         varchar(40),                    " \
+                   "start             date,                           " \
+                   "end               date                            " \
                    ");                                                ")
-
+    # ---------------------------------------------------------------------------------- Create identity table
+    executePSqlCmd("posbuddy", "posbuddy",
+                   "create table revenues (" \
+                   "posBuddyId        varchar(36)    not null , " \
+                   "itemId            varchar(10)    not null , " \
+                   "amount            int            not null , " \
+                   "timeOfSales       date           not null   " \
+                   ");                                           ")
 
 def executePSqlCmd(database, user, psqlCommand):
     process = subprocess.Popen(
