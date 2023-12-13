@@ -31,6 +31,15 @@ def main():
                    "name              varchar(40)    not null,        " \
                    "location          varchar(40)    not null         " \
                    ");                                                ")
+    # ---------------------------------------------------------------------------------- Create identity table
+    executePSqlCmd("posbuddy", "posbuddy",
+                   "create table identity (" \
+                   "posBuddyId        varchar(36)    not null unique, " \
+                   "surname           varchar(40)    not null,        " \
+                   "lastname          varchar(40)    not null,        " \
+                   "birthday          date           not null,        " \
+                   "atribute1          date           not null,        " \
+                   ");                                                ")
 
 
 def executePSqlCmd(database, user, psqlCommand):
