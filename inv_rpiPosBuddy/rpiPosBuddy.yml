@@ -2,6 +2,7 @@ all: # keys must be unique, i.e. only one 'hosts' per group
   hosts:
     posBuddy:
       posBuddy_database_image: "postgres:latest"
+      posBuddy_core_image: "posbuddy-api:latest"
       posBuddy_database_admin: "postgres"
       posBuddy_database_admin_password: "postgres"
       posBuddy_database_password: "posBuddy"

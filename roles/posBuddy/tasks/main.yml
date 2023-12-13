@@ -25,6 +25,14 @@
     mode: 0775
   become: yes
 
+- name: create asset volume
+  file:
+    path: posbuddy-core_asset
+    state: directory
+    owner: posBuddy
+    group: posBuddy
+  become: yes
+
 - name: copy docker-compose file
   template:
     src: "templates/docker-compose.yml.y2"

@@ -1,9 +1,9 @@
 
 # Info
 In this Folder is the posBuddy **example** Certificate Authority.  
-
-**DONT** use this for production enviroments
-
+***
+**DON'T** use this for CA production enviroments
+***
 ## Content
 
 1. The Certificate Authority

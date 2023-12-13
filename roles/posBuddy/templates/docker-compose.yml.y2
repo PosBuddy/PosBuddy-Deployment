@@ -1,6 +1,19 @@
 version: '3'
 services:
   #-----------------------------------------------------------------------------------
+  posBuddy-core:
+    image: {{ posBuddy_core_image }}
+    container_name: posBuddy-core
+    restart: always
+    hostname: posBuddy-core
+    volumes:
+        - /opt/posBuddy/posbuddy-core_asset:/asset
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1024m"
+    network_mode: "host"
+  #-----------------------------------------------------------------------------------
   posBuddy-database:
     image: {{ posBuddy_database_image }}
     container_name: posBuddy-database
@@ -15,7 +28,6 @@ services:
       driver: "json-file"
       options:
         max-size: "1024m"
-
     network_mode: "host"
 
 volumes:
