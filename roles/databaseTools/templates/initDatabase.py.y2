@@ -5,6 +5,8 @@ import subprocess
 
 
 def main():
+
+    executePSqlCmd("postgres","postgres","ALTER DATABASE posbuddy SET TIMEZONE TO 'Europe/Berlin'")
     # -----------------------------------------------------------------------------------------Create Databases and User
     executePSqlCmd("postgres", "postgres",
                    "CREATE USER  posbuddy  WITH PASSWORD '{{ posBuddy_database_password }}';")
@@ -41,18 +43,21 @@ def main():
                    "atribute1         varchar(40),                    " \
                    "atribute2         varchar(40),                    " \
                    "atribute3         varchar(40),                    " \
-                   "startAllocation   date,                           " \
-                   "endAllocation     date,                           " \
+                   "startAllocation   timestamp,                      " \
+                   "endAllocation     timestamp,                      " \
                    "balance           real           not null         " \
                    ");                                                ")
-    # ---------------------------------------------------------------------------------- Create identity table
+    # ---------------------------------------------------------------------------------- Create revenues table
     executePSqlCmd("posbuddy", "posbuddy",
                    "create table revenues (" \
+                   "id                 SERIAL,                  " \
                    "posBuddyId        varchar(36)    not null , " \
-                   "itemId            varchar(10)    not null , " \
+                   "itemId            varchar(10)             , " \
                    "amount            int            not null , " \
-                   "timeOfSales       date           not null   " \
-                   ");                                           ")
+                   "paymentAction     varchar(1)     not null , " \
+                   "value             real           not null , " \
+                   "timeOfAction      timestamp      not null   " \
+                   ");                                          ")
 
 def executePSqlCmd(database, user, psqlCommand):
     process = subprocess.Popen(
