@@ -20,7 +20,7 @@ def main():
     executePSqlCmd("posbuddy", "posbuddy",
                    "create table items (" \
                    "id                varchar(10)    not null unique, " \
-                   "artikel           varchar(40)    not null," \
+                   "itemText          varchar(40)    not null," \
                    "unit              varchar(20)    not null," \
                    "minAge            integer        not null," \
                    "dispensingStation varchar(10)    not null," \
@@ -52,7 +52,7 @@ def main():
                    "create table revenues (" \
                    "id                 SERIAL,                  " \
                    "posBuddyId        varchar(36)    not null , " \
-                   "itemId            varchar(10)             , " \
+                   "itemText          varchar(40)             , " \
                    "amount            int            not null , " \
                    "paymentAction     varchar(1)     not null , " \
                    "value             real           not null , " \

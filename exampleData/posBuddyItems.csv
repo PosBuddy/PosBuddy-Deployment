@@ -1,0 +1,8 @@
+ID,Bezeichnung,Einheit,Mindestalter,Ausgabestation,Preis
+gCoke_n,Coca Cola ,Glas,0,bar1,"2,20 EUR"
+gCoke_z,Coca Cola Zero,Glas,0,bar1,"2,20 EUR"
+GBier0.2,Bier Kölsch 0.2,Glas,16,bar1,"2,50 EUR"
+gWa,Wasser,Glas,0,bar1,"2,00 EUR"
+eBWurst,Bratwurst,Stück,0,grill1,"3,00 EUR"
+eNacken,Nackensteak,Stück,0,grill1,"4,00 EUR"
+eNackenBr,Nackensteak im Brötchen,Stück,0,grill1,"4,30 EUR"
