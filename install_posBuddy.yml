@@ -9,4 +9,5 @@
 #    - greeting
 #    - docker
 #    - posBuddy
-    - databaseTools
+#    - databaseTools
+    - posBuddyAssets
