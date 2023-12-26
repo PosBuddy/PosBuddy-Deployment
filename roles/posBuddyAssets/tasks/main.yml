@@ -1,0 +1,8 @@
+---
+
+- name: copy assets
+  copy:
+    src: { { posBuddy_assets } }
+    dest: /opt/posBuddy/posbuddy-core_asset
+  with_fileglob:
+    - "/playbooks/files/fooapp/*"
