@@ -8,3 +8,5 @@ all: # keys must be unique, i.e. only one 'hosts' per group
       posBuddy_database_password: "posBuddy"
       # --
       posBuddy_assets: "developmentProfile"
+      # --
+      posbuddy_domain_name: "posBuddy.local"

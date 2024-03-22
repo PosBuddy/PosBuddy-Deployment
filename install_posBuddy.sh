@@ -30,5 +30,5 @@ fi
 
 cowsay "Starting Ansible Playbook"
 
-ansible-playbook $1 install_posBuddy.yml -i inv_rpiPosBuddy
+ansible-playbook $1 install_posBuddy.yml -i inv_gve
 

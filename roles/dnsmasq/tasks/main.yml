@@ -1,0 +1,70 @@
+---
+
+# This playbook install and configure dnsmasq
+# executes at ssh login
+
+- name: setting up dnsmasq
+  apt:
+    pkg:
+      - dnsmasq
+  become: yes
+
+# Checks entrys in dnsmasq maybe uncomment the entrys
+- lineinfile:
+    dest: /etc/dnsmasq.conf
+    regexp: domain-needed
+    line: 'domain-needed'
+  become: true
+
+- lineinfile:
+    dest: /etc/dnsmasq.conf
+    state: present
+    line: 'strict-order'
+  become: true
+
+- lineinfile:
+    dest: /etc/dnsmasq.conf
+    state: present
+    line: 'bogus-priv'
+  become: true
+
+- lineinfile:
+    dest: /etc/dnsmasq.conf
+    state: present
+    line: 'expand-hosts'
+  become: true
+
+- lineinfile:
+    dest: /etc/dnsmasq.conf
+    state: present
+    line: 'domain={{ posbuddy_domain_name }}'
+  become: true
+
+- lineinfile:
+    dest: /etc/dnsmasq.conf
+    state: present
+    line: 'listen-address=127.0.0.1'
+  become: true
+
+- lineinfile:
+    dest: /etc/dnsmasq.conf
+    state: present
+    line: 'listen-address=192.168.0.5'
+  become: true
+
+- lineinfile:
+    dest: /etc/dnsmasq.conf
+    state: present
+    line: 'local=/gve.elsenroth/'
+  become: true
+
+- name: add dns entrys
+  shell: "nmcli con mod 'Wired connection 1' ipv4.dns '127.0.0.1 8.8.8.8'"
+  become: yes
+
+- name: Restart NetworkManager
+  ansible.builtin.service:
+    name: NetworkManager
+    state: restarted
+
+

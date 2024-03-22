@@ -10,4 +10,5 @@
 #    - docker
 #    - posBuddy
 #    - databaseTools
-    - posBuddyAssets
+#    - posBuddyAssets
+    - dnsmasq
