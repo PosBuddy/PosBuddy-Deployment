@@ -5,8 +5,7 @@ import subprocess
 
 
 def main():
-
-    executePSqlCmd("postgres","postgres","ALTER DATABASE posbuddy SET TIMEZONE TO 'Europe/Berlin'")
+    executePSqlCmd("postgres", "postgres", "ALTER DATABASE posbuddy SET TIMEZONE TO 'Europe/Berlin'")
     # -----------------------------------------------------------------------------------------Create Databases and User
     executePSqlCmd("postgres", "postgres",
                    "CREATE USER  posbuddy  WITH PASSWORD '{{ posBuddy_database_password }}';")
@@ -57,6 +56,12 @@ def main():
                    "paymentAction     varchar(1)     not null , " \
                    "value             real           not null , " \
                    "timeOfAction      timestamp      not null   " \
+                   ");                                          ")
+    # ---------------------------------------------------------------------------------- Create config table
+    executePSqlCmd("posbuddy", "posbuddy",
+                   "create table config (          " \
+                   "id                varchar(36)    not null , " \
+                   "configJson        json                      " \
                    ");                                          ")
 
 def executePSqlCmd(database, user, psqlCommand):
