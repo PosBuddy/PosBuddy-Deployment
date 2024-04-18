@@ -22,6 +22,7 @@ services:
     environment:
         - POSTGRES_USER={{ posBuddy_database_admin }}
         - POSTGRES_PASSWORD={{ posBuddy_database_admin_password }}
+        - TZ= "Europe/Berlin"
     volumes:
         - postgres_db:/var/lib/postgresql/data
     logging:

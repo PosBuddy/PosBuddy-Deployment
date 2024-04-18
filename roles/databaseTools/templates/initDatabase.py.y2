@@ -61,7 +61,7 @@ def main():
     executePSqlCmd("posbuddy", "posbuddy",
                    "create table config (          " \
                    "id                varchar(36)    not null , " \
-                   "configJson        json                      " \
+                   "config_json        json                      " \
                    ");                                          ")
 
 def executePSqlCmd(database, user, psqlCommand):

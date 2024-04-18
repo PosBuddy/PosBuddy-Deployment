@@ -9,6 +9,6 @@
 #    - greeting
 #    - docker
 #    - posBuddy
-#    - databaseTools
+    - databaseTools
 #    - posBuddyAssets
-    - dnsmasq
+#    - dnsmasq
