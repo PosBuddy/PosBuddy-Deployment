@@ -10,6 +10,11 @@
     src: "templates/resetPosBuddyDB.sh"
     dest: "/opt/posBuddy"
 
+- name: copy backup script
+  template:
+    src: "templates/createBackup.sh"
+    dest: "/opt/posBuddy"
+
 - name: init database
   shell: "python /opt/posBuddy/initDatabase.py"
   become: no
