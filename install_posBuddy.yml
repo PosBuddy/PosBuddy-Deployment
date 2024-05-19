@@ -3,12 +3,12 @@
 
 - name: Install all componentes of PosBuddy
   hosts: all
-  remote_user: posBuddy
+  remote_user: jkarthaus
 
   roles:
 #    - greeting
 #    - docker
-#    - posBuddy
+    - posBuddy
     - databaseTools
 #    - posBuddyAssets
 #    - dnsmasq

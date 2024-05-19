@@ -1,7 +1,7 @@
 all: # keys must be unique, i.e. only one 'hosts' per group
   hosts:
-    posBuddy:
-      posBuddy_user_name: "posBuddy"
+    localhost:
+      posBuddy_user_name: "jkarthaus"
       posBuddy_database_image: "postgres:latest"
       posBuddy_core_image: "posbuddy-api:latest"
       posBuddy_database_admin: "postgres"
@@ -10,4 +10,6 @@ all: # keys must be unique, i.e. only one 'hosts' per group
       # --
       posBuddy_assets: "developmentProfile"
       # --
-      posbuddy_domain_name: "posBuddy.local"
+      posbuddy_domain_name: "localhost"
+
+# THIS INVENTORY IS FOR TESTING AND DEVELOPING

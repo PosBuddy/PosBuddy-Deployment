@@ -20,7 +20,7 @@
   file:
     path: /opt/posBuddy
     state: directory
-    owner: posBuddy
+    owner: "{{ posBuddy_user_name }}"
     group: root
     mode: 0775
   become: yes
@@ -29,8 +29,8 @@
   file:
     path: /opt/posBuddy/posbuddy-core_asset
     state: directory
-    owner: posBuddy
-    group: posBuddy
+    owner: "{{ posBuddy_user_name }}"
+    group: "{{ posBuddy_user_name }}"
   become: yes
 
 - name: copy docker-compose file

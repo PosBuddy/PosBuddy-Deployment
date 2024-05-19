@@ -3,7 +3,7 @@
 clear
 
 echo "-------------------------------------------------------"
-echo "INSTALLING PosBuddy via Ansible on Raspberry Pi"
+echo "INSTALLING PosBuddy via Ansible on Raspberry Pi or local"
 echo "-------------------------------------------------------"
 
 
@@ -30,5 +30,9 @@ fi
 
 cowsay "Starting Ansible Playbook"
 
-ansible-playbook $1 install_posBuddy.yml -i inv_gve
+# default inatallation on remote RPI
+#ansible-playbook $1 install_posBuddy.yml -i inv_rpiPosBuddy
+
+# use this, if you install on localhost
+ansible-playbook $1 install_posBuddy.yml -i inv_local -K
 
