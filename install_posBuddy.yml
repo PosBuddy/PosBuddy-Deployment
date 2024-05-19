@@ -8,7 +8,7 @@
   roles:
 #    - greeting
 #    - docker
-    - posBuddy
+#    - posBuddy
     - databaseTools
 #    - posBuddyAssets
 #    - dnsmasq
