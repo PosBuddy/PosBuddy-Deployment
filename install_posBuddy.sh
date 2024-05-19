@@ -31,8 +31,8 @@ fi
 cowsay "Starting Ansible Playbook"
 
 # default inatallation on remote RPI
-ansible-playbook $1 install_posBuddy.yml -i inv_rpiPosBuddy
+#ansible-playbook $1 install_posBuddy.yml -i inv_rpiPosBuddy
 
 # use this, if you install on localhost
-#ansible-playbook $1 install_posBuddy.yml -i inv_local -K
+ansible-playbook $1 install_posBuddy.yml -i inv_local -K
 

@@ -1,19 +1,36 @@
 ---
 
 - name: copy database init
-  template:
+  ansible.builtin.copy:
     src: "templates/initDatabase.py.y2"
     dest: "/opt/posBuddy/initDatabase.py"
+    owner: "{{ posBuddy_user_name }}"
+    group: "{{ posBuddy_user_name }}"
+    mode: u=rwx,g=rwx,o=r
 
 - name: copy database reset
-  template:
+  ansible.builtin.copy:
     src: "templates/resetPosBuddyDB.sh"
     dest: "/opt/posBuddy"
+    owner: "{{ posBuddy_user_name }}"
+    group: "{{ posBuddy_user_name }}"
+    mode: u=rwx,g=rwx,o=r
 
 - name: copy backup script
-  template:
+  ansible.builtin.copy:
     src: "templates/createBackup.sh"
     dest: "/opt/posBuddy"
+    owner: "{{ posBuddy_user_name }}"
+    group: "{{ posBuddy_user_name }}"
+    mode: u=rwx,g=rwx,o=r
+
+- name: copy restore script
+  ansible.builtin.copy:
+    src: "templates/restoreBackup.sh"
+    dest: "/opt/posBuddy"
+    owner: "{{ posBuddy_user_name }}"
+    group: "{{ posBuddy_user_name }}"
+    mode: u=rwx,g=rwx,o=r
 
 - name: init database
   shell: "python /opt/posBuddy/initDatabase.py"
