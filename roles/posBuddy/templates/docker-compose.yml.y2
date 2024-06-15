@@ -13,6 +13,8 @@ services:
       options:
         max-size: "1024m"
     network_mode: "host"
+    environment:
+        TZ: "Europe/Berlin"
   #-----------------------------------------------------------------------------------
   posBuddy-database:
     image: {{ posBuddy_database_image }}

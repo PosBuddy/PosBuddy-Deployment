@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="oneTimeID" pageWidth="170" pageHeight="226" columnWidth="154" leftMargin="8" rightMargin="8"
+              topMargin="14" bottomMargin="14" uuid="cd36847d-eb71-4292-be19-fd0f0f347027">
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="LocalPosBuddy"/>
+    <property name="com.jaspersoft.studio.unit.pageHeight" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.pageWidth" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.topMargin" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.bottomMargin" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.leftMargin" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.rightMargin" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.columnWidth" value="mm"/>
+    <property name="com.jaspersoft.studio.unit.columnSpacing" value="mm"/>
+    <parameter name="posBuddyId" class="java.lang.String"/>
+    <queryString language="SQL">
+        <![CDATA[select * from identity where posbuddyid = $P{posBuddyId}]]>
+    </queryString>
+    <field name="posbuddyid" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="posbuddyid"/>
+        <property name="com.jaspersoft.studio.field.label" value="posbuddyid"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="identity"/>
+    </field>
+    <field name="surname" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="surname"/>
+        <property name="com.jaspersoft.studio.field.label" value="surname"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="identity"/>
+    </field>
+    <field name="lastname" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="lastname"/>
+        <property name="com.jaspersoft.studio.field.label" value="lastname"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="identity"/>
+    </field>
+    <field name="startallocation" class="java.sql.Timestamp">
+        <property name="com.jaspersoft.studio.field.name" value="startallocation"/>
+        <property name="com.jaspersoft.studio.field.label" value="startallocation"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="identity"/>
+    </field>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <columnHeader>
+        <band splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="px"/>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="83" splitType="Stretch">
+            <property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+            <property name="com.jaspersoft.studio.unit.height" value="mm"/>
+            <frame>
+                <reportElement x="0" y="0" width="154" height="74" uuid="2648bdb8-435c-4c37-99de-a2c4490dc0c5"/>
+                <componentElement>
+                    <reportElement key="" x="25" y="0" width="99" height="74"
+                                   uuid="fb72018f-8c99-458e-97fd-b36b642d704b">
+                        <property name="com.jaspersoft.studio.element.name" value="Eonmalticket"/>
+                    </reportElement>
+                    <jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components"
+                               xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+                        <jr:codeExpression><![CDATA[$F{posbuddyid}]]></jr:codeExpression>
+                    </jr:QRCode>
+                </componentElement>
+            </frame>
+        </band>
+        <band height="70">
+            <staticText>
+                <reportElement x="0" y="19" width="40" height="13" uuid="8ea9801b-3a9d-4405-aefb-0f0c5b66e376"/>
+                <text><![CDATA[Datum:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="0" width="154" height="18" uuid="91522cfa-0179-4362-9823-67f9f115e331"/>
+                <textElement textAlignment="Center">
+                    <font fontName="DejaVu Serif" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[PosBuddy.de]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="50" y="19" width="100" height="12" uuid="85aa51fe-e7f1-496b-af8a-1501f5e60951"/>
+                <textFieldExpression><![CDATA[$F{startallocation}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="36" width="75" height="12" uuid="693e5c6f-f401-4a1c-807f-c750f5a8fb15"/>
+                <textFieldExpression><![CDATA[$F{surname}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="75" y="36" width="79" height="12" uuid="bf708734-5868-47e0-8de5-7749b8f2edb6"/>
+                <textFieldExpression><![CDATA[$F{lastname}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="px"/>
+        </band>
+    </columnFooter>
+    <pageFooter>
+        <band splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="px"/>
+        </band>
+    </pageFooter>
+</jasperReport>
